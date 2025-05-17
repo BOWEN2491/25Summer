@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+Access-Control-Allow-Origin: *
 <html>
 <head>
     <style>
@@ -38,9 +39,18 @@ function inputFunction(){
       <p>您输入的用户名: ${username}</p>
       <p>您输入的密码: ${password}</p>
     `;
+    fetch(`http://127.0.0.1:8888/hello/${username}/${password}`)
+        .then(response => response.json())
+        .then(data => {
+            window.alert(data);
+        })
+        .catch(error => {
+            console.error('请求出错：', error);
+        })
 }
 </script>
 
 
 </body>
 </html>
+//问题：数据库怎么办
